@@ -1,14 +1,16 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import FileResponse
 from config import attachment_directory
-from logger import log
+from logger import log, logMemoryHit
 from os.path import exists
 
-app = FastAPI()
+app = FastAPI(use_cache = False)
 
 @app.get("/ping")
 def ping():
     return "pong!"
+
+
 
 @app.get("/attachment/{attachment_name}",
          responses={
@@ -20,9 +22,10 @@ def ping():
         )
 def send_attachment(attachment_name: str):
         attachment_path = f"{attachment_directory}\\{attachment_name}"
-        log(f"Sending file {attachment_path}...")
         if not exists(attachment_path):
             log(f"Requested file {attachment_path} not found on server!")
             raise HTTPException(status_code=404)
-        attachment = FileResponse(attachment_path)
-        return attachment
+        with open(attachment_path, "rb") as attachment_file:
+            attachment = attachment_file.read()
+        logMemoryHit()
+        return Response(attachment, media_type="image/jpeg", headers={"Cache-Control": "no-cache"})

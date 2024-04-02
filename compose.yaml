@@ -1,0 +1,9 @@
+services:
+  central:
+    build: ./central
+    ports:
+      - "8002:8002"
+  edge:
+    build: ./edge
+    ports:
+      - "8001:8001"

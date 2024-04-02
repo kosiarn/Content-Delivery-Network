@@ -70,7 +70,7 @@ W folderze `perf_tests/` znajduje się skrypt `performance_test.py`, który poka
 
 ### Introduction
 
-Static resources - content that can be delivered without being modificated or generated, such as:
+Static resources - content that can be delivered without being modified or generated, such as:
 
 - images,
 - text files,

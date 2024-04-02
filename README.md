@@ -1,5 +1,6 @@
 # Content-Delivery-Network
 
+English version below!
 
 ## Język polski
 
@@ -64,3 +65,64 @@ W folderze `perf_tests/` znajduje się skrypt `performance_test.py`, który poka
 - Domyślnie porty, na których są uruchomione API serwerów są połączone z portami `8001` i `8002` hosta. Przed uruchomieniem projektu upewnij się, że żaden inny proces nie nasłuchuje na tych portach.
 
 - Ze względu na mały zbiór załączników dostępnych na serwerze źródłowym, serwer centralny symuluje długie wyszukiwanie poprzez odczekiwanie dwóch sekund przed wysłaniem odpowiedzi.
+
+## English 
+
+### Introduction
+
+Static resources - content that can be delivered without being modificated or generated, such as:
+
+- images,
+- text files,
+- sound files.
+
+This content can be available through a static server; despite that looking up requested resource can be lenghty in a case of a large database.
+
+### Caching
+
+Long operations can be optimized by temporarily storing their results. If the same action is requested, the result is simply loaded from cache; if cache read/write operations are fast, the whole system can get a significant performance boost. **Important note**: In order for cache to be useful, the operation *has* to be deterministic(the same inputs = the same outputs every time).
+
+### CDN(Content Delivery Network)
+
+Content Delivery Network is an implementation of a cache in static content delivery. 
+It consists of a series of edge servers that act as a cache memory for the central server.
+Every user request goes through an edge server; if it has the requested resource, then it sends it back. If the resource isn't present in the edge server's memory, it tries to get it from the origin server. After receiving the file, the edge server:
+- sends it to the user,
+- saves it in the edge server's memory.
+
+Edge servers store less files than origin servers; that makes their lookups faster, speeding up resolving requests regarding often needed files.
+
+### Using this repository
+
+The fastes way is using Docker and `docker-compose` to run the whole infrastructure.
+
+- Make sure that you have Docker installed and running. Open up the terminal and run:
+
+```cmd
+docker list
+```
+If the result is a list(can be empty), then you're set.
+
+- Clone the repo, then move to its directory in the terminal.
+
+```cmd
+cd path/to/repo/Content-Delivery-Network
+```
+
+- Run the command:
+
+```cmd
+docker-compose up
+```
+
+- Wait for the containers to build and run. If everything goes well, logs from both services will fill the terminal.
+
+#### Performance tests
+
+The `perf_tests/` directory contains `performance_test.py` script. It compares connections with and without edge server by response times. `requirements.txt` file contains the name and version of a dependency needed by the script. After installing it, run the servers and then the script. `test_config.py` contains configuration for the tests. If you make changes to the docker compose file or servers' code, make sure to reflect them in test script config.
+
+#### Notes
+
+- The project uses ports `8001` and `8002` by default; make sure that they're free or change them in `compose.yaml` and test config.
+
+- The project has only few attachments available on the central server. To better simulate expensive lookup, it does `time.sleep(2)` on every response.

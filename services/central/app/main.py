@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import FileResponse
-from config import attachment_directory
-from logger import log, logMemoryHit
+from .config import attachment_directory
+from .logger import log, logMemoryHit
 from os.path import exists
 
 app = FastAPI(use_cache = False)

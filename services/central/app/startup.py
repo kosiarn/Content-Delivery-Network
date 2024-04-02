@@ -1,5 +1,5 @@
 import os
-import config
+from . import config
 from logger import log
 
 attachmentDirExists = os.path.exists(config.attachment_directory)

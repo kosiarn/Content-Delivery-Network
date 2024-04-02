@@ -21,7 +21,7 @@ def ping():
                                   "detail": "Resource not found"}}}}}
         )
 def send_attachment(attachment_name: str):
-        attachment_path = f"{attachment_directory}\\{attachment_name}"
+        attachment_path = f"app/{attachment_directory}{attachment_name}"
         if not exists(attachment_path):
             log(f"Requested file {attachment_path} not found on server!")
             raise HTTPException(status_code=404)

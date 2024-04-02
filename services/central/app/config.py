@@ -1,2 +1,2 @@
-attachment_directory = r".\\attachments\\"
+attachment_directory = r"attachments/"
 

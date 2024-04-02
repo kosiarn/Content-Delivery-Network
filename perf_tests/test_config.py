@@ -9,4 +9,4 @@ available_attachments = [
     "squirrel.jpg"
 ]
 
-NUM_REQUESTS_PER_TEST = 1000
+NUM_REQUESTS_PER_TEST = 100

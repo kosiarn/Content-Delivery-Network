@@ -3,6 +3,7 @@ from fastapi.responses import FileResponse
 from .config import attachment_directory
 from .logger import log, logMemoryHit
 from os.path import exists
+from time import sleep
 
 app = FastAPI(use_cache = False)
 
@@ -10,7 +11,7 @@ app = FastAPI(use_cache = False)
 def ping():
     return "pong!"
 
-
+simulateExpensiveLookup = lambda: sleep(2)
 
 @app.get("/attachment/{attachment_name}",
          responses={
@@ -28,4 +29,5 @@ def send_attachment(attachment_name: str):
         with open(attachment_path, "rb") as attachment_file:
             attachment = attachment_file.read()
         logMemoryHit()
+        simulateExpensiveLookup()
         return Response(attachment, media_type="image/jpeg", headers={"Cache-Control": "no-cache"})

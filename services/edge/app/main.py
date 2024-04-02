@@ -34,9 +34,10 @@ def get_attachment(attachment_name: str):
     """
     if cache.isInCache(attachment_name):
         attachment = cache.getFromCache(attachment_name)
-    try:
-        attachment = fetchFromCentralServer(attachment_name)
-        cache.cacheAttachemnt(attachment, attachment_name)
-    except FileNotFoundError:
-        raise HTTPException(404, "File not found!")
+    else:
+        try:
+            attachment = fetchFromCentralServer(attachment_name)
+            cache.cacheAttachemnt(attachment, attachment_name)
+        except FileNotFoundError:
+            raise HTTPException(404, "File not found!")
     return Response(attachment, media_type="image/jpeg", headers={"Cache-Control": "no-cache"})

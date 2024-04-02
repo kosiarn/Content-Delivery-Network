@@ -1,5 +1,5 @@
 from fs.memoryfs import MemoryFS
-from logger import logCacheHit
+from .logger import logCacheHit
 
 
 cache = MemoryFS()

@@ -1,6 +1,6 @@
 from requests import get
-from config import central_server_address
-from logger import log, logCentralServerHit
+from .config import central_server_address
+from .logger import log, logCentralServerHit
 
 try:
     central_server_ping = get(f"{central_server_address}/ping")

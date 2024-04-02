@@ -2,7 +2,7 @@ from fastapi import FastAPI, Response, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from . import config
 from . import cache
-from central_server_connection import fetchFromCentralServer
+from .central_server_connection import fetchFromCentralServer
 
 
 app = FastAPI()

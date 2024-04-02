@@ -14,11 +14,11 @@ def log(message:str) -> None:
     with open(f"./logs/{current_time:%Y-%m-%d}.txt", "a") as log_file:
         log_file.write(f"{formatted_log_message} \n")
 
-logDirExists = os.path.exists(r".\\logs\\")
+logDirExists = os.path.exists("./logs/")
 
 if not logDirExists:
     try:
-        os.makedirs(r".\\logs\\")
+        os.makedirs("./logs/")
     except:
         log: function = lambda message: print(message)
         log("Couldn't create log directory; log messages won't be saved.")

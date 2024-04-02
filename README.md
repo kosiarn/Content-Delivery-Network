@@ -57,7 +57,7 @@ docker-compose up
 
 #### Testy wydajności
 
-W folderze `perf_tests/` znajduje się skrypt `performance_test.py`, który pokazuje proste porównanie wydajności przed i po zastosowaniu serwera brzegowego. Plik `requirements.txt` zawiera zależność potrzebną do prawidłowego działania skryptu. Po zainstalowaniu potrzebnego modułu, wystarczy uruchomić skrypt za pomocą Pythona. W razie potrzeby można zmienić konfigurację testu za pomocą pliku `test_config.py`.
+W folderze `perf_tests/` znajduje się skrypt `performance_test.py`, który pokazuje proste porównanie wydajności przed i po zastosowaniu serwera brzegowego. Plik `requirements.txt` zawiera zależność potrzebną do prawidłowego działania skryptu. Po zainstalowaniu potrzebnego modułu, wystarczy uruchomić skrypt za pomocą Pythona. W razie potrzeby można zmienić konfigurację testu za pomocą pliku `test_config.py`. Skrypt testuje infrastrukturę uruchomioną lokalnie - wykonaj instrukcje z całego kroku *Korzystanie z repozytorium* przed uruchomieniem testów.
 
 #### Uwagi
 

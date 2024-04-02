@@ -1,0 +1,21 @@
+services:
+  central:
+    build: ./services/central/
+    networks:
+      cdn_network:
+        ipv4_address: 192.168.15.11
+  edge:
+    build: ./services/edge/
+    ports:
+      - "8001:8001"
+    networks:
+      cdn_network:
+        ipv4_address: 192.168.15.10
+    environment:
+      - CENTRAL_SERVER_ADDRESS=http://192.168.15.11:8002
+networks:
+  cdn_network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.15.0/24"

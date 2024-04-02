@@ -1,1 +1,5 @@
 fs==2.4.16
+fastapi==0.52.0
+pydantic
+uvicorn
+requests==2.23.0

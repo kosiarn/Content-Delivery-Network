@@ -1,6 +1,8 @@
 services:
   central:
     build: ./services/central/
+    ports:
+      - "8002:8002"
     networks:
       cdn_network:
         ipv4_address: 192.168.15.11

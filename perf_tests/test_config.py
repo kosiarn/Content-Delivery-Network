@@ -8,3 +8,5 @@ available_attachments = [
     "red_kite.jpg",
     "squirrel.jpg"
 ]
+
+NUM_REQUESTS_PER_TEST = 1000

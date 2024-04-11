@@ -5,7 +5,7 @@ from .logger import log, logCentralServerHit
 try:
     central_server_ping = get(f"{central_server_address}/ping")
 
-    if central_server_ping.content != "pong!":
+    if central_server_ping.content != b'"pong!"':
         log("Central server unreachable!")
 except:
     log("Central server unreachable!")

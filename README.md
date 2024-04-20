@@ -53,6 +53,15 @@ docker-compose up
 
 - Wait for the containers to build and run. If everything goes well, logs from both services will fill the terminal.
 
+#### Services' docs
+
+Paths:
+
+- `./services/central`
+- `./services/edge`
+
+contain their respective server's README file that contains the documentation of every implemented function.
+
 #### Performance tests
 
 The `perf_tests/` directory contains `performance_test.py` script. It compares connections with and without edge server by response times. `requirements.txt` file contains the name and version of a dependency needed by the script. After installing it, run the servers and then the script. `test_config.py` contains configuration for the tests. If you make changes to the docker compose file or servers' code, make sure to reflect them in test script config.
@@ -116,6 +125,15 @@ docker-compose up
 ```
 
 - Zaczekaj na zbudowanie i uruchomienie kontenerów. Jeśli wszystko odbędzie się prawidłowo, informacja o uruchomieniu obydwu serwerów powinna pojawić się w terminalu.
+
+#### Dokumentacja usług
+
+Ścieżki:
+
+- `./services/central`
+- `./services/edge`
+
+Zawierają plik README swoich usług. Zawartość tych plików to dokumentacja wszystkich funkcji, jakie zostały zaimplementowane dla danego serwera.
 
 #### Testy wydajności
 

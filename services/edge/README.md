@@ -74,7 +74,7 @@ A function that checks if the file is in the specified cache.
 Parameters:
 
 - `attachment_name` - a name(with extension) of the file to fetch,
-- `cache_filesystem` - a cache to fetch the file from. The default is the cache created by the module.
+- (Optional) `cache_filesystem` - a cache to fetch the file from. The default is the cache created by the module.
 
 A function for retrieving a resource from cache.
 

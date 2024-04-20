@@ -126,3 +126,4 @@ W folderze `perf_tests/` znajduje się skrypt `performance_test.py`, który poka
 - Domyślnie porty, na których są uruchomione API serwerów są połączone z portami `8001` i `8002` hosta. Przed uruchomieniem projektu upewnij się, że żaden inny proces nie nasłuchuje na tych portach.
 
 - Ze względu na mały zbiór załączników dostępnych na serwerze źródłowym, serwer centralny symuluje długie wyszukiwanie poprzez odczekiwanie dwóch sekund przed wysłaniem odpowiedzi.
+

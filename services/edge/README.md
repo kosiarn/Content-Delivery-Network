@@ -92,3 +92,101 @@ A GET endpoint used for fetching the attachment. It first attempts to find it in
 
 - A response with code 200 OK and the file contents,
 - A response with code 404 Not Found.
+
+
+## Polish
+
+### Config
+
+Contains a config option for central server address.
+
+Moduł, w którym można skonfigurować adres do serwera centralnego.
+
+### Logger
+
+Narzędzia do rejestrowania logów.
+Moduł próbuje stworzyć ścieżkę `logs/` jeśli nie istnieje. Jeśli operacja się powiedzie, logi będą wpisywane do pliku o nazwie `<aktualna data w formacie YYYY-mm-dd>.txt` w tym folderze.
+Jeśli folderu nie da się utworzyć - logi będą jedynie wyświetlane w konsoli.
+
+#### `log()`
+
+Parametry:
+
+- `message` - łańcuch znaków zawierający wiadomość logu.
+
+Główna funkcja do rejestrowania logów. Opatruje wiadomość aktualną godziną, po czym wysyła ją do konsoli, i - jeśli to możliwe - do pliku logów.
+
+#### `logCentralServerHit()`
+
+Funkcja służąca do rejestrowania w logach zapytań do serwera głównego. Automatycznie zlicza ilość takich zapytań.
+
+#### `logCacheHit()`
+
+Funkcja służąca do rejestrowania w logach odczytów z pamięci podręcznej. Automatycznie zlicza ilość takich odczytów.
+
+### Central_server_connection
+
+Ten moduł sprawdza łączność z serwerem centralnym i definiuje funkcję służącą do łączenia się z nim.
+
+#### `fetchFromCentralServer()`
+
+Parametry:
+
+- `attachment_name` - nazwa(z rozszerzeniem) pliku do pobrania.
+
+Funkcja służąca do pobierania plików z serwera centralnego. Może zwrócić:
+
+- Zawartość odpowiedzi serwera głównego,
+- `FileNotFoundError`, jeśli serwer zwrócił kod 404.
+
+### Cache
+
+Moduł definiujący pamięć podręczną i funkcje pozwalające na interakcję z nią.
+
+#### `cacheAttachemnt()`
+
+Parametry:
+
+- `attachment` - zawartość pliku do przechowania,
+- `attachment_name` - nazwa(z rozszerzeniem), pod jaką ma być przechowany plik,
+- (opcjonalne) `cache_filesystem` - pamięć, w której plik ma być przechowany. Domyślnie jest to pamięć utworzona przez moduł.
+
+Funkcja, którą można zapisać plik do pamięci podręcznej.
+
+#### `isInCache()`
+
+Parametry:
+
+- `attachment_name` - nazwa(z rozszerzeniem) pliku do wyszukania.
+- (opcjonalne) `cache_filesystem` - pamięć do przeszukania. Domyślnie jest to pamięć utworzona przez moduł.
+
+Funkcja do sprawdzania, czy dany plik znajduje się w pamięci podręcznej.
+
+#### `getFromCache()`
+
+Parametry:
+
+- `attachment_name` - nazwa(z rozszerzeniem) pliku do pobrania z pamięci,\
+- (opcjonalne) `cache_filesystem` - pamięć, z której plik ma być pobrany. Domyślnie jest to pamięć utworzona przez moduł.
+
+Funkcja do pobrania pliku z pamięci podręcznej.
+
+### Main
+
+Główny moduł definiujący wszystkie endpointy API.
+
+#### `/ping`
+
+Endpoint GET służący do sprawdzania łączności.
+
+#### `/attachment/<nazwa załącznika>`
+
+A GET endpoint used for fetching the attachment. It first attempts to find it in the cache and if it's not present, it tries to fetch it from the server. It can return:
+
+- A response with code 200 OK and the file contents,
+- A response with code 404 Not Found.
+
+Endpoint GET służący do pobierania załącznika. Najpierw sprawdzana jest pamięć podręczna; jeśli załącznik się w niej znajduje, jest on z niej pobierany i odsyłany; w przeciwnym wypadku odpytywany jest serwer główny. Możliwe odpowiedzi:
+
+- Z kodem 200 OK i zawartością pliku,
+- Z kodem 404 Not Found.

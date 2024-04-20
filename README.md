@@ -30,7 +30,7 @@ Edge servers store less files than origin servers; that makes their lookups fast
 
 ### Using this repository
 
-The fastes way is using Docker and `docker-compose` to run the whole infrastructure.
+The fastest way is using Docker and `docker-compose` to run the whole infrastructure.
 
 - Make sure that you have Docker installed and running. Open up the terminal and run:
 

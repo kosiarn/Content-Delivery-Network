@@ -82,6 +82,8 @@ A function for retrieving a resource from cache.
 
 A main module that defines all API endpoints.
 
+After running the project the server's Swagger UI is available under `http://localhost:<edge server's port>/docs`. It lists all available endpoints and shares an interface to test them.
+
 #### `/ping`
 
 A GET endpoint useful to check if the server is up.
@@ -174,6 +176,7 @@ Funkcja do pobrania pliku z pamięci podręcznej.
 ### Main
 
 Główny moduł definiujący wszystkie endpointy API.
+Uruchomiony serwer udostępnia Swagger UI pod adresem `http://localhost:<port serwera brzegowego>/docs`. Można przejrzeć w nim listę dostępnych portów oraz je przetestować.
 
 #### `/ping`
 

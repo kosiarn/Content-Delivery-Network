@@ -33,6 +33,7 @@ This module takes care of making sure that the attachment directory exists or ma
 ### Main
 
 The main file of the server. It defines the API endpoints and their logic.
+After running the project the server's Swagger UI is available under `http://localhost:<central server's port>/docs`. It lists all available endpoints and shares an interface to test them.
 
 #### `/ping`
 
@@ -75,6 +76,7 @@ Ten moduł upewnia się, że folder z załącznkami istnieje oraz że ewentualny
 ### Main
 
 Główny kod serwera. Definiuje endpointy API i ich działanie.
+Uruchomiony serwer udostępnia Swagger UI pod adresem `http://localhost:<port serwera centralnego>/docs`. Można przejrzeć w nim listę dostępnych portów oraz je przetestować.
 
 #### `/ping`
 
